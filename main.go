@@ -1,6 +1,14 @@
 // main.go
 package main
 
+import "fmt"
+
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
 func main() {
-	println("Ba dum, tss!")
+	fmt.Printf("my app %s, commit %s, built at %s\new(type)", version, commit, date)
 }
