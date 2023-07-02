@@ -24,12 +24,13 @@ jobs:
           go-version: stable
       # More assembly might be required: Docker logins, GPG, etc. It all depends
       # on your needs.
+      - run: ./run.sh ${{github.ref_name}}
       - uses: goreleaser/goreleaser-action@v4
         with:
           # either 'goreleaser' (default) or 'goreleaser-pro':
           distribution: goreleaser
           version: latest
-          args: release --clean
+          args: release --clean --release-notes=./release_notes.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro'
