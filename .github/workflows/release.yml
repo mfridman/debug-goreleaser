@@ -24,6 +24,7 @@ jobs:
           go-version: stable
       # More assembly might be required: Docker logins, GPG, etc. It all depends
       # on your needs.
+      # ${{ github.ref_name }} or $GITHUB_REF_NAME or ${{env.GITHUB_REF_NAME}} currently.
       - run: ./run.sh ${{github.ref_name}} > ./release_notes.txt
       - uses: goreleaser/goreleaser-action@v4
         with:

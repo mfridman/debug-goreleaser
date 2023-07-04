@@ -2,24 +2,26 @@
 # 
 # This is an example .goreleaser.yml file with some sensible defaults.
 # Make sure to check the documentation at https://goreleaser.com
-project_name: goose
+project_name: godebug
 
 before:
   hooks:
     # You may remove this if you don't use go modules.
     - go mod tidy
-    # you may remove this if you don't need go generate
-    - go generate ./...
 builds:
   - env:
       - CGO_ENABLED=0
+    binary: godebug
+    main: ./cmd/foo
     goos:
-      - linux
+      # - linux
+      # - windows
       - darwin
-      - windows
     goarch:
-      - amd64
+      # - amd64
       - arm64
+    ldflags:
+      - "-s -w -X main.version=v{{ .Version }}"
 
 # goose_darwin_arm64
 # goose_darwin_x86_64

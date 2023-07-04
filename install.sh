@@ -15,9 +15,9 @@ if [ "$arch" = "aarch64" ]; then
 fi
 
 if [ $# -eq 0 ]; then
-	goose_uri="https://github.com/mfridman/debug-goreleaser/releases/latest/download/goose_${os}_${arch}"
+	goose_uri="https://github.com/mfridman/debug-goreleaser/releases/latest/download/godebug_${os}_${arch}"
 else
-	goose_uri="https://github.com/mfridman/debug-goreleaser/releases/download/${1}/goose_${os}_${arch}"
+	goose_uri="https://github.com/mfridman/debug-goreleaser/releases/download/${1}/godebug_${os}_${arch}"
 fi
 
 goose_install="${GOOSE_INSTALL:-/usr/local}"
@@ -31,7 +31,7 @@ fi
 curl --silent --show-error --location --fail --location --output "${exe}" "$goose_uri"
 chmod +x "${exe}"
 
-echo "Goose was installed successfully to ${exe}"
-if command -v goose >/dev/null; then
-	echo "Run 'goose --help' to get started"
+echo "godebug was installed successfully to ${exe}"
+if command -v godebug >/dev/null; then
+	echo "Run 'godebug' to get started"
 fi
